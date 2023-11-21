@@ -225,6 +225,15 @@
           document.getElementById("loadingInfo").style.display = "none";
           document.getElementById("box").style.display = "none";
           gameInstance = unityInstance;
+
+          if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
+          {
+            gameInstance.SendMessage('DeviceDetector', 'SetDeviceType', 'true');
+          }
+          else
+          {
+            gameInstance.SendMessage('DeviceDetector', 'SetDeviceType', 'false');
+          }
         }).catch((message) => {
           alert(message);
         });
